@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>南华 · 怎么读庄子</title>
+<meta name="theme-color" content="#789262">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="南华">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<style>
+:root{
+  --paper:#F4F0E2; --paper2:#EFEAD8;
+  --ink:#2E2C26; --ink2:#5C584C;
+  --bam:#789262; --bam-d:#4F6144; --stone:#3E7A5B; --cang:#5C6E58;
+  --cinnabar:#B03A2E; --line:rgba(46,44,38,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1200px 500px at 85% -60px, rgba(120,146,98,.16), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(92,88,76,.022) 0 1px, transparent 1px 3px),
+    var(--paper);
+  color:var(--ink);
+  font-family:"Songti SC","Noto Serif SC","STSong",Georgia,serif;
+  line-height:1.9;
+  padding:0 18px calc(50px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:520px;margin:0 auto;position:relative;z-index:2}
+.sec{margin-top:52px}
+/* —— 印章 —— */
+.seal{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--cinnabar);color:#F6EFDD;border-radius:5px;font-size:15px;font-weight:900;letter-spacing:.05em;transform:rotate(-2.5deg);box-shadow:0 2px 6px rgba(176,58,46,.3);line-height:1.1;text-align:center;padding:2px}
+.seal.out{background:transparent;border:2px solid var(--cinnabar);color:var(--cinnabar);box-shadow:none}
+/* —— 首屏 —— */
+#hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;margin:0 -18px;padding:0 18px}
+.mtn{position:absolute;left:0;right:0;bottom:0;z-index:1;pointer-events:none}
+.vbig{writing-mode:vertical-rl;font-size:56px;font-weight:900;letter-spacing:.16em;color:var(--bam-d);line-height:1;margin:0 auto;position:relative;z-index:2;display:flex;flex-direction:row;align-items:flex-start;gap:14px}
+.vbig .w{font-size:15px;color:var(--ink2);letter-spacing:.32em;font-weight:700;padding-top:6px}
+.hero-foot{position:relative;z-index:2;text-align:center;margin-top:26px}
+.hero-foot .t1{font-size:17px;font-weight:800;letter-spacing:.3em;color:var(--ink)}
+.hero-foot .t2{font-size:11px;color:var(--ink2);letter-spacing:.22em;margin-top:6px}
+.hero-foot .sub{font-size:11.5px;color:var(--ink2);margin-top:14px;letter-spacing:.08em}
+.scroll-hint{text-align:center;margin-top:30px;font-size:10px;color:var(--ink2);letter-spacing:.4em;position:relative;z-index:2}
+/* —— 章节头 —— */
+.shead{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.shead .no{font-family:Georgia,serif;font-style:italic;font-size:12px;color:var(--bam);font-weight:800;letter-spacing:.1em}
+.shead .st{font-size:20px;font-weight:900;letter-spacing:.14em;color:var(--ink)}
+.shead .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.ssub{font-size:11px;color:var(--ink2);letter-spacing:.1em;margin-bottom:16px}
+/* —— 卡片 —— */
+.card{background:rgba(255,253,246,.72);border:1px solid var(--line);border-radius:4px;padding:18px 17px;margin-bottom:13px;box-shadow:0 1px 0 rgba(46,44,38,.04)}
+/* 为什么读 */
+.why{font-size:13.5px;line-height:2.1;text-align:justify}
+.why b{color:var(--bam-d)}
+.vq{writing-mode:vertical-rl;font-size:14px;color:var(--cang);height:118px;margin:8px auto 2px;letter-spacing:.14em;font-weight:700}
+.vq-cap{text-align:center;font-size:9px;color:var(--ink2);letter-spacing:.2em}
+/* 33 篇结构 */
+.struct{display:flex;gap:9px;margin:4px 0 14px}
+.sbox{flex:1;border:1px solid var(--line);border-radius:4px;padding:10px 8px;text-align:center;background:rgba(255,253,246,.6)}
+.sbox .n{font-size:21px;font-weight:900;color:var(--bam-d);font-family:Georgia,serif}
+.sbox .l{font-size:10px;color:var(--ink2);letter-spacing:.16em;margin-top:2px}
+.sbox .d{font-size:9px;color:var(--ink2);margin-top:3px}
+/* 路线 */
+.route{border-left:3px solid var(--bam);background:rgba(255,253,246,.72);padding:14px 15px;margin-bottom:12px;border-radius:0 4px 4px 0}
+.route .rt{font-size:14.5px;font-weight:900;color:var(--bam-d);letter-spacing:.06em}
+.route .rd{font-size:12px;color:var(--ink2);margin-top:4px;line-height:1.9}
+.route .steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.route .sp{background:var(--paper2);border:1px solid var(--line);font-size:11px;padding:3px 10px;border-radius:99px;color:var(--ink);font-weight:700}
+.route .sp:first-child{background:var(--bam);border-color:var(--bam);color:#F6EFDD}
+/* 篇卡 */
+.pian{border:1px solid var(--line);border-radius:4px;background:rgba(255,253,246,.72);margin-bottom:11px;overflow:hidden}
+.pian-h{display:flex;align-items:center;gap:12px;padding:14px 15px;cursor:pointer}
+.pian-h:active{background:rgba(120,146,98,.06)}
+.pian-h .pn{font-size:19px;font-weight:900;letter-spacing:.1em;color:var(--ink)}
+.pian-h .pe{font-family:Georgia,serif;font-style:italic;font-size:10px;color:var(--bam);letter-spacing:.06em;margin-top:1px}
+.pian-h .pl{margin-left:auto;font-size:14px;color:var(--bam-d);transition:transform .25s}
+.pian.open .pian-h .pl{transform:rotate(90deg)}
+.pian-b{display:none;padding:2px 16px 17px;border-top:1px dashed var(--line)}
+.pian.open .pian-b{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.pian-b .one{font-size:12.8px;line-height:2;margin-top:11px;text-align:justify}
+.pian-b .lab{font-size:9.5px;color:var(--cinnabar);letter-spacing:.28em;font-weight:900;margin:13px 0 6px}
+.fy{display:flex;flex-wrap:wrap;gap:6px}
+.fy span{background:var(--paper2);border:1px solid var(--line);font-size:11px;padding:2px 9px;border-radius:99px;color:var(--ink2)}
+.how{font-size:12.3px;line-height:1.95;color:var(--ink);background:rgba(120,146,98,.08);border-radius:4px;padding:10px 12px}
+.pq{writing-mode:vertical-rl;font-size:15px;font-weight:700;color:var(--bam-d);height:150px;margin:14px auto 4px;letter-spacing:.16em}
+/* 名句画廊 */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gcard{border:1px solid var(--line);border-radius:4px;background:rgba(255,253,246,.75);padding:14px 10px 11px;display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:all .2s;min-height:208px}
+.gcard:active{transform:scale(.97)}
+.gcard .gv{writing-mode:vertical-rl;font-size:13.5px;font-weight:700;letter-spacing:.13em;line-height:2;flex:1;color:var(--ink)}
+.gcard .gs{font-size:8.5px;color:var(--ink2);letter-spacing:.14em;margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);writing-mode:horizontal-tb;text-align:center}
+.gcard.on{background:var(--bam-d);border-color:var(--bam-d)}
+.gcard.on .gv{color:#F6EFDD}
+.gcard.on .gs{color:rgba(246,239,221,.75);border-color:rgba(246,239,221,.3)}
+.gstat{text-align:center;font-size:10px;color:var(--ink2);letter-spacing:.2em;margin-top:12px}
+/* 读法 */
+.fa{display:flex;gap:12px;padding:13px 2px;border-bottom:1px dashed var(--line)}
+.fa:last-child{border-bottom:none}
+.fa .fn{font-family:Georgia,serif;font-style:italic;font-size:19px;font-weight:900;color:var(--bam);min-width:26px}
+.fa .ft{font-size:13.5px;font-weight:800;letter-spacing:.04em}
+.fa .fd{font-size:12px;color:var(--ink2);line-height:1.9;margin-top:3px;text-align:justify}
+/* 版本 */
+.bk{display:flex;gap:13px;padding:13px 2px;border-bottom:1px dashed var(--line)}
+.bk:last-child{border-bottom:none}
+.bk .bi{width:44px;height:60px;flex-shrink:0;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;writing-mode:vertical-rl;letter-spacing:.18em;color:#F6EFDD;padding-top:8px}
+.bk .bt{font-size:13.8px;font-weight:800;letter-spacing:.03em}
+.bk .ba{font-size:10.5px;color:var(--ink2);margin-top:2px;letter-spacing:.05em}
+.bk .bd{font-size:11.8px;color:var(--ink2);line-height:1.85;margin-top:5px}
+/* 尾 */
+.end{margin-top:56px;text-align:center;padding-bottom:8px}
+.end .e1{writing-mode:vertical-rl;font-size:22px;font-weight:900;letter-spacing:.16em;color:var(--bam-d);margin:0 auto;height:150px}
+.end .e2{font-size:10px;color:var(--ink2);letter-spacing:.14em;margin-top:14px;line-height:2}
+.end .seals{margin-top:16px;display:flex;justify-content:center;gap:10px}
+/* 导航 */
+.tocbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(244,240,226,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:4px;padding:9px 8px calc(9px + env(safe-area-inset-bottom))}
+.tocbar a{font-size:11px;color:var(--ink2);text-decoration:none;padding:5px 10px;border-radius:99px;letter-spacing:.1em;font-weight:700}
+.tocbar a:active{background:rgba(120,146,98,.15)}
+.toast{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(24px);background:var(--bam-d);color:#F6EFDD;font-size:11.5px;font-weight:800;padding:9px 20px;border-radius:99px;opacity:0;transition:all .3s;pointer-events:none;z-index:99;letter-spacing:.1em}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 首屏 -->
+  <div id="hero">
+    <svg class="mtn" viewBox="0 0 520 210" preserveAspectRatio="xMidYMax slice">
+      <path d="M0 210 L0 150 Q60 96 118 138 Q150 158 178 132 Q230 84 286 128 Q320 152 352 126 Q400 88 448 130 Q484 158 520 138 L520 210 Z" fill="rgba(120,146,98,.34)"/>
+      <path d="M0 210 L0 182 Q70 148 132 172 Q190 190 250 168 Q320 142 380 170 Q450 196 520 172 L520 210 Z" fill="rgba(79,97,68,.42)"/>
+      <path d="M0 210 L520 210" stroke="rgba(62,122,91,.5)" stroke-width="1.5"/>
+    </svg>
+    <div class="vbig">南华<span class="w">怎么读 · 庄子入门</span></div>
+    <div class="hero-foot">
+      <div class="t1">南 华</div>
+      <div class="t2">HOW TO READ ZHUANGZI</div>
+      <div class="sub">三十三篇太多？从一篇故事读起。</div>
+    </div>
+    <div class="scroll-hint">顺 流 而 下 ↓</div>
+  </div>
+
+  <!-- 一 为什么读 -->
+  <div class="sec" id="s1">
+    <div class="shead"><span class="seal">壹</span><span class="st">为什么读他</span><span class="rule"></span><span class="no">No.01</span></div>
+    <div class="card why">
+      两千三百年前，有个做过<b>漆园小吏</b>的人，家里穷到向监河侯借米，却在濮水边钓鱼时对楚王的使者说：「往矣！吾将曳尾于涂中。」<br><br>
+      他叫<b>庄周</b>，宋国蒙人，战国时人。《庄子》一书三十三篇，一半是故事、一半是对话，讲逍遥、讲齐物、讲怎么在乱世里活得自在。读他不为了背道理，而为了<b>多一种活法</b>——心累的时候尤其管用。
+      <div class="vq">吾生也有涯，而知也无涯</div>
+      <div class="vq-cap">——《养生主》</div>
+    </div>
+  </div>
+
+  <!-- 二 结构与路线 -->
+  <div class="sec" id="s2">
+    <div class="shead"><span class="seal">贰</span><span class="st">先看地图</span><span class="rule"></span><span class="no">No.02</span></div>
+    <div class="ssub">今本《庄子》共三十三篇，晋人郭象所定——学界通说内七篇为庄子亲笔，外杂篇出自后学</div>
+    <div class="struct">
+      <div class="sbox"><div class="n">7</div><div class="l">内篇</div><div class="d">庄子亲笔 · 核心</div></div>
+      <div class="sbox"><div class="n">15</div><div class="l">外篇</div><div class="d">后学所记 · 多故事</div></div>
+      <div class="sbox"><div class="n">11</div><div class="l">杂篇</div><div class="d">杂录 · 最轻松</div></div>
+    </div>
+    <div class="route">
+      <div class="rt">快活路线（推荐）</div>
+      <div class="rd">从故事最好读的下手，先被庄子迷住，再啃哲学。</div>
+      <div class="steps"><span>养生主 · 庖丁解牛</span><span>秋水 · 河伯见海若</span><span>逍遥游 · 大鹏</span><span>齐物论 · 梦蝶</span></div>
+    </div>
+    <div class="route">
+      <div class="rt">正统路线</div>
+      <div class="rd">按内篇原序读——逍遥游是全书总纲，但也是最陡的山。</div>
+      <div class="steps"><span>逍遥游</span><span>齐物论</span><span>养生主</span><span>人间世</span><span>德充符</span><span>大宗师</span><span>应帝王</span></div>
+    </div>
+    <div class="route">
+      <div class="rt">偷懒路线</div>
+      <div class="rd">只读白话译文或漫画版，先把故事都看一遍，喜欢再回头读原文。</div>
+      <div class="steps"><span>蔡志忠《庄子说》</span><span>三全本译文</span><span>挑喜欢的回原文</span></div>
+    </div>
+  </div>
+
+  <!-- 三 内七篇导读 -->
+  <div class="sec" id="s3">
+    <div class="shead"><span class="seal">叁</span><span class="st">内七篇导读</span><span class="rule"></span><span class="no">No.03</span></div>
+    <div class="ssub">点开一篇：它讲什么 · 核心寓言 · 怎么读 · 一句名句</div>
+    <div id="pianHost"></div>
+  </div>
+
+  <!-- 四 名句画廊 -->
+  <div class="sec" id="s4">
+    <div class="shead"><span class="seal">肆</span><span class="st">名句画廊</span><span class="rule"></span><span class="no">No.04</span></div>
+    <div class="ssub">抄过一遍才算读过——点卡片收进囊中</div>
+    <div class="gal" id="galHost"></div>
+    <div class="gstat" id="galStat"></div>
+  </div>
+
+  <!-- 五 读法五则 -->
+  <div class="sec" id="s5">
+    <div class="shead"><span class="seal">伍</span><span class="st">读法五则</span><span class="rule"></span><span class="no">No.05</span></div>
+    <div class="card" style="padding-top:6px">
+      <div class="fa"><div class="fn">i</div><div><div class="ft">当故事读，别当论文读</div><div class="fd">先看热闹：鲲有多大、庖丁怎么运刀、蝴蝶是谁。道理自己会从故事里渗出来，不必先背哲学史。</div></div></div>
+      <div class="fa"><div class="fn">ii</div><div><div class="ft">把对话当话剧看</div><div class="fd">庄子最爱编两个人抬杠：河伯与海若、惠子与庄子。分清谁在说话，读起来像看戏，一点也不闷。</div></div></div>
+      <div class="fa"><div class="fn">iii</div><div><div class="ft">今译开路，原文收尾</div><div class="fd">每段先读白话，懂了再回头看原文——庄子的文风本身就是内容，回来读原文才算真读。</div></div></div>
+      <div class="fa"><div class="fn">iv</div><div><div class="ft">读不懂就跳过去</div><div class="fd">《齐物论》号称全书最难，卡住很正常。庄子自己都说「得意而忘言」——跳过那段，不妨碍逍遥。</div></div></div>
+      <div class="fa"><div class="fn">v</div><div><div class="ft">每次只读一小段</div><div class="fd">一天读半篇、配一个寓言就够了。庄子的正确打开频率是一周三次，不是一天一本。</div></div></div>
+    </div>
+  </div>
+
+  <!-- 六 版本推荐 -->
+  <div class="sec" id="s6">
+    <div class="shead"><span class="seal">陆</span><span class="st">带哪本上路</span><span class="rule"></span><span class="no">No.06</span></div>
+    <div class="card" style="padding-top:6px">
+      <div class="bk"><div class="bi" style="background:var(--bam)">庄子</div><div><div class="bt">《庄子》中华书局「三全本」</div><div class="ba">全本 · 全注 · 全译</div><div class="bd">入门首选：原文、注释、白话翻译三对照，开卷即读，不用任何基础。</div></div></div>
+      <div class="bk"><div class="bi" style="background:var(--stone)">今译</div><div><div class="bt">《庄子今注今译》陈鼓应</div><div class="ba">商务印书馆 · 经典注译本</div><div class="bd">进阶之选：注解汇集历代研究成果，想往深里读、读懂异文和考据，用它。</div></div></div>
+      <div class="bk"><div class="bi" style="background:var(--cang)">漫画</div><div><div class="bt">《庄子说》蔡志忠</div><div class="ba">漫画版 · 轻入门</div><div class="bd">零压力之选：把寓言画成连环画，适合「先跟庄子交个朋友」的阶段。</div></div></div>
+    </div>
+  </div>
+
+  <!-- 尾 -->
+  <div class="end">
+    <div class="e1">泛若不系之舟</div>
+    <div class="seals"><span class="seal">南华</span><span class="seal out">读庄</span></div>
+    <div class="e2">篇目结构与引文据通行本《庄子》（郭象注三十三篇本）<br>导读文字为入门归纳 · 原文请以所购版本为准</div>
+  </div>
+
+</div>
+
+<nav class="tocbar">
+  <a href="#s1">缘起</a><a href="#s2">地图</a><a href="#s3">七篇</a><a href="#s4">名句</a><a href="#s5">读法</a><a href="#s6">版本</a>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+/* ============ 数据：内七篇（公知通说，引文据通行本） ============ */
+var PIAN=[
+ {t:"逍遥游",e:"XIAOYAO YOU · Free and Easy Wandering",one:"全书总纲：什么是真正的自由。小雀笑大鹏，是因为它们各有各的尺寸；而真正的逍遥，是「无所待」——不依赖任何东西的自由。",fy:["北冥有鱼，其名为鲲","蜩与学鸠之笑","尧让天下于许由","大而无用的大樗"],how:"开篇的鲲鹏想象先别分析，直接享受那个画面。读完问自己一句：我的「待」是什么——什么东西没了我就不快乐？",q:"乘天地之正，而御六气之辩，以游无穷者，彼且恶乎待哉",src:"逍遥游"},
+ {t:"齐物论",e:"QIWU LUN · On Leveling All Things",one:"全书哲学最深的一篇：是非从哪来？庄子说，立场不同则结论不同——「彼亦一是非，此亦一是非」。梦蝶的恍惚就藏在这篇结尾。",fy:["吾丧我","朝三暮四的猴子","啮缺四问四不知","庄周梦蝶"],how:"公认最难，读不懂是常态，不是你的问题。建议第一遍只抓「朝三暮四」和「庄周梦蝶」两个故事，其余跳过，二刷再回来。",q:"昔者庄周梦为胡蝶……不知周之梦为胡蝶与，胡蝶之梦为周与",src:"齐物论"},
+ {t:"养生主",e:"YANGSHENG ZHU · Essentials of Nurturing Life",one:"全书写得最漂亮的一篇：养生之道不在保养身体，而在顺着事物的纹理活——庖丁解牛十九年，刀刃若新发于硎。",fy:["庖丁解牛","缘督以为经","泽雉十步一啄","薪尽火传"],how:"全书最短的入门键。先读「庖丁解牛」，把「依乎天理」「因其固然」记下来——牛身上有缝，日子也有缝。",q:"吾生也有涯，而知也无涯。以有涯随无涯，殆已",src:"养生主"},
+ {t:"人间世",e:"RENJIAN SHI · In the Human World",one:"乱世生存指南：颜回要去卫国，庄子教他「心斋」； trees 因为不成材反而长寿——在复杂的人间，先学会保全自己。",fy:["颜回将之卫","心斋","螳臂当车","不材之木与雁"],how:"职场感和人间感最强的一篇。重点读「心斋」二字的故事语境：不是躺平，是把心腾空了再做事。",q:"虚室生白，吉祥止止",src:"人间世"},
+ {t:"德充符",e:"DECHONG FU · Signs of Full Virtue",one:"一群「兀者」与丑人的故事：断脚的王骀，丑到惊人的哀骀它，偏偏人人追随——德有所长而形有所忘，内在充盈的人不需要外形。",fy:["兀者王骀","哀骀它","才全而德不形","惠子与庄子的辩论"],how:"庄子故意全写残疾人和丑人。读完想想：你身边有没有那种「看着平平却让人想靠近」的人——这就是这篇在讲的事。",q:"德有所长而形有所忘，人不忘其所忘而忘其所不忘",src:"德充符"},
+ {t:"大宗师",e:"DAZONG SHI · The Great Ancestral Teacher",one:"「道」是什么、真人什么样：相濡以沫，不如相忘于江湖；子舆病了却心闲——安时而处顺，哀乐不能入。",fy:["真人之息以踵","相濡以沫","子祀子舆四友","坐忘"],how:"「相忘于江湖」和「坐忘」是两个必抓点。这篇谈生死最透，情绪低落时读，有奇效——但别在深夜一口气读完。",q:"泉涸，鱼相与处于陆，相呴以湿，相濡以沫，不如相忘于江湖",src:"大宗师"},
+ {t:"应帝王",e:"YING DI WANG · Responding to Emperors and Kings",one:"内篇收尾：什么样的领导才算好——浑沌没有七窍，好心人为他凿窍，日凿一窍，七日而浑沌死。",fy:["啮缺问于王倪","壶子四示相","明王之治","浑沌之死"],how:"最后读浑沌的故事就好：好的安排是让事物按本来面目活着。「为你好」式的好心，也可能凿死一个浑沌。",q:"南海之帝为儵，北海之帝为忽，中央之帝为浑沌",src:"应帝王"}
+];
+var GAL=[
+ {v:"北冥有鱼，其名为鲲",s:"逍遥游"},
+ {v:"朝三而暮四，众狙皆怒",s:"齐物论"},
+ {v:"吾生也有涯，而知也无涯",s:"养生主"},
+ {v:"庖丁解牛，技进乎道",s:"养生主"},
+ {v:"虚室生白，吉祥止止",s:"人间世"},
+ {v:"相濡以沫，不如相忘于江湖",s:"大宗师"},
+ {v:"子非鱼，安知鱼之乐",s:"秋水"},
+ {v:"庄周梦为胡蝶",s:"齐物论"},
+ {v:"泛若不系之舟",s:"列御寇"}
+];
+/* ============ 渲染 ============ */
+var $=function(x){return document.getElementById(x)};
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var S=null;try{S=window.localStorage}catch(e){}
+function load(){if(!S)return{};try{return JSON.parse(S.getItem("nh.du.1")||"{}")}catch(e){return{}}}
+function save(){if(S)try{S.setItem("nh.du.1",JSON.stringify(st))}catch(e){}}
+var st=load();if(!st.gal)st.gal={};
+var tT;
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tT);tT=setTimeout(function(){t.classList.remove("show")},1600)}
+/* 篇卡 */
+var h="";
+PIAN.forEach(function(p,i){
+  h+='<div class="pian" data-i="'+i+'"><div class="pian-h"><div><div class="pn">'+esc(p.t)+'</div><div class="pe">'+esc(p.e)+'</div></div><span class="pl">›</span></div>'+
+     '<div class="pian-b"><div class="one">'+esc(p.one)+'</div>'+
+     '<div class="lab">核心寓言</div><div class="fy">'+p.fy.map(function(f){return "<span>"+esc(f)+"</span>"}).join("")+'</div>'+
+     '<div class="lab">怎么读</div><div class="how">'+esc(p.how)+'</div>'+
+     '<div class="pq">'+esc(p.q)+'</div><div class="vq-cap">——'+esc(p.src)+'</div></div></div>';
+});
+$("pianHost").innerHTML=h;
+document.querySelectorAll(".pian-h").forEach(function(el){
+  el.onclick=function(){el.parentNode.classList.toggle("open")};
+});
+/* 名句 */
+var gh="";
+GAL.forEach(function(g,i){
+  gh+='<div class="gcard'+(st.gal[i]?" on":"")+'" data-i="'+i+'"><div class="gv">'+esc(g.v)+'</div><div class="gs">—— '+esc(g.s)+' ——</div></div>';
+});
+$("galHost").innerHTML=gh;
+function gstat(){
+  var n=0;GAL.forEach(function(_,i){if(st.gal[i])n++});
+  $("galStat").textContent="已收 "+n+" / "+GAL.length+" 句"+(n===GAL.length?" · 全收齐了，逍遥 ✓":"");
+}
+gstat();
+document.querySelectorAll(".gcard").forEach(function(el){
+  el.onclick=function(){
+    var i=el.getAttribute("data-i");
+    if(st.gal[i]){delete st.gal[i];el.classList.remove("on")}
+    else{st.gal[i]=1;el.classList.add("on");toast("收进囊中 ✓")}
+    save();gstat();
+  };
+});
+})();
+</script>
+</body>
+</html>
